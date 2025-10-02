@@ -24,6 +24,7 @@ along with obdgpslogger.  If not, see <http://www.gnu.org/licenses/>.
 #define __OBDGUI_H
 
 
+
 /// UI State
 enum ui_state {
 	UI_STOPPED, ///< OBD GPS Logger not running
