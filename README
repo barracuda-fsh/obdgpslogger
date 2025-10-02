@@ -1,5 +1,10 @@
 OBDII/GPS Logging Tool
 
+Jure Poljsak:
+"What's different here between this fork and gpslogger0.16? This
+fork has been hacked so that it doesn't supports gpsd and a little
+patch was added so that it compiles smoothly(before it did not compile).
+It's mainly for using obdsim. That's what I needed, nothing else."
 
 What?
 
