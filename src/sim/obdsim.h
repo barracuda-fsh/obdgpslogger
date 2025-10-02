@@ -216,7 +216,6 @@ static const struct option longopts[] = {
 	{ "launch-logger", no_argument, NULL, 'o' }, ///< Launch obdgpslogger
 	{ "launch-screen", no_argument, NULL, 'c' }, ///< Launch screen
 	{ "tty-device", required_argument, NULL, 't' }, ///< Open this actual device instead of a pty
-	{ "tcp-port", required_argument, NULL, 'T' }, ///< TCP port
 #endif //OBDPLATFORM_POSIX
 #ifdef OBDPLATFORM_WINDOWS
 	{ "com-port", required_argument, NULL, 'w' }, ///< Windows com port to open
@@ -230,7 +229,7 @@ static const struct option longopts[] = {
 /// getopt() short options
 static const char shortopts[] = "hln:e:vs:g:q:V:D:p:Ld:"
 #ifdef OBDPLATFORM_POSIX
-	"oct:T:"
+	"oct:"
 #endif //OBDPLATFORM_POSIX
 #ifdef OBDPLATFORM_WINDOWS
 	"w:"

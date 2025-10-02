@@ -39,7 +39,6 @@ along with obdgpslogger.  If not, see <http://www.gnu.org/licenses/>.
 #include <fcntl.h>
 
 #include "posixsimport.h"
-#include "tcpsimport.h"
 #endif //OBDPLATFORM_POSIX
 
 #ifdef OBDPLATFORM_WINDOWS
@@ -237,9 +236,6 @@ int main(int argc, char **argv) {
 
 	// If you should open a real device instead of a pty
 	char *tty_device = NULL;
-	
-	// listen port for socket sim port
-	unsigned short listen_port = 0;
 #endif //OBDPLATFORM_POSIX
 
 #ifdef HAVE_BLUETOOTH
@@ -371,9 +367,6 @@ int main(int argc, char **argv) {
 				}
 				tty_device = strdup(optarg);
 				break;
-			case 'T':
-				listen_port = (unsigned short)atoi(optarg);
-				break;
 #endif //OBDPLATFORM_POSIX
 #ifdef OBDPLATFORM_WINDOWS
 			case 'w':
@@ -444,12 +437,7 @@ int main(int argc, char **argv) {
 #endif //HAVE_BLUETOOTH
 
 #ifdef OBDPLATFORM_POSIX
-		if(listen_port != 0) {
-			sp = new TCPSimPort(listen_port);
-		}
-		else {
-			sp = new PosixSimPort(tty_device);
-		}
+		sp = new PosixSimPort(tty_device);
 #endif //OBDPLATFORM_POSIX
 
 #ifdef OBDPLATFORM_WINDOWS
@@ -671,7 +659,6 @@ void printhelp(const char *argv0) {
 		"   [-o|--launch-logger]\n"
 		"   [-c|--launch-screen] [\"EXIT\" or C-a,k to exit]\n"
 		"   [-t|--tty-device=<real /dev/ entry to open>]\n"
-		"   [-T|--tcp-port=<port>]\n"
 #endif //OBDPLATFORM_POSIX
 #ifdef OBDPLATFORM_WINDOWS
 		"   [-w|--com-port=<windows COM port>]\n"
