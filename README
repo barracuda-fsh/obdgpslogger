@@ -15,7 +15,7 @@ How do I build this?
 
 mkdir build
 cd build
-cmake .. # or ccmake .. to edit options
+cmake ..
 make
 make install
 
